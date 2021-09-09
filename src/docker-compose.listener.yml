@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  listener:
+    container_name: listener
+    image: ${DOCKER_REGISTRY-}listener
+    depends_on:
+      - rest-proxy
+    build:
+      context: .
+      dockerfile: KafkaListener/Dockerfile
+    ports:
+      - "80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:80
+      ConsumerConfig__BootstrapServers: kafka:9092
+      ConsumerConfig__GroupId: wsl-consumer
+      ListenerConfig__Host: http://172.17.80.1:5002
+      ListenerConfig__Route: /hello
+      ListenerConfig__Topic: hello-topic
