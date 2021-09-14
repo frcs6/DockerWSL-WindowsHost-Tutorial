@@ -47,7 +47,7 @@ From [Docker documentation](https://docs.docker.com/engine/install/ubuntu/) :
 sudo apt-get update
 ```
 ``` console
-sudo apt-get install apt-transport-httca-certificates curl gnupg lsb-release
+sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
 ```
 ``` console
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
